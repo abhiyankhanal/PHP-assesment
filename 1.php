@@ -1,9 +1,9 @@
-<?php
-//1. Write a code, using listed PHP functions, with example 
-// a. is_int() 
-// b. is_numeric() 
-// c. is_integer() 
+<!-- 1. Write a code, using listed PHP functions, with example 
+a. is_int() 
+b. is_numeric() 
+c. is_integer()  -->
 
+<?php
 //test variables here
 $var = array(1,"4","five",32.5);
 for($i=0; $i < count($var); $i++){
