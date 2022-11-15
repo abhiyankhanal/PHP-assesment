@@ -21,5 +21,4 @@ function scrapJSON($link)
 }
 
 scrapJSON('https://dummyjson.com/products/search?q=Laptop');
-
 ?>

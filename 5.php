@@ -13,6 +13,7 @@ viii. url: Detail URL of the book – String
 d. Create a ‘CSV’ file named ‘science_listing.csv’, with data collected.  -->
 
 
+
 <?php
 $url = 'https://books.toscrape.com/catalogue/category/books/science_22/index.html';
 $ch = curl_init();
@@ -43,7 +44,7 @@ foreach ($prices as $k => $price) {
     $final_arr[$k]['category'] = category;
 }
 
-foreach ($articles as $k => $link) {
+foreach($articles as $k => $link) {
     $title = $link->getElementsByTagName('a');
     foreach($title as $t) {
         $new_t = $t->getAttribute('title');
@@ -58,7 +59,7 @@ foreach($urls as $k => $a) {
     $new_t = $a->getAttribute('href');
     $full_link = str_replace('../../..', 'https://books.toscrape.com/catalogue', $new_t);
     if($full_link) {
-        $final_arr[$k]['href'] = $full_link;
+        $final_arr[$k]['category_url'] = $full_link;
     }
 }
 
@@ -76,7 +77,6 @@ foreach ($ratings as $k => $rating) {
     $rr = str_replace('star-rating', '', $rating->getAttribute('class'));
     $final_arr[$k]['rating'] = $rr;
 }
-// print_r($final_arr);
 
 $fp = fopen('science_listing.csv', 'w');
 fputcsv($fp, array_keys($final_arr[0]));
@@ -91,4 +91,3 @@ function generateIds(){
 $str_result='0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
 return substr(str_shuffle($str_result),0, 8);
 }
-
